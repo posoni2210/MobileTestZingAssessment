@@ -1,9 +1,8 @@
-* Mobile Test Automation*
+**Mobile Test Automation**
 Using Demo app 
-* can be found in- C:\Users\posoni\Downloads\MobileTestAutomation\src\main\resources\apps\Android-MyDemoAppRN.1.3.0.build-244.apk
+* App can be found in- C:\Users\posoni\Downloads\MobileTestAutomation\src\main\resources\apps\Android-MyDemoAppRN.1.3.0.build-244.apk
 
-Tools
-
+**Tools**
 Maven
 Cucumber core
 cucumber junit
