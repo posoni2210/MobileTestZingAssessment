@@ -8,8 +8,6 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
-
-import java.net.MalformedURLException;
 import java.net.URL;
 
 public class MobileAndroidDriver {
@@ -20,14 +18,14 @@ private Config config;
 
     }
 
-    private DesiredCapabilities getCapabilities() throws MalformedURLException {
+    private DesiredCapabilities getCapabilities() {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("automationName", MyAndroidModule.getAutomationName());
         capabilities.setCapability("platformName", "android");
         capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "11");
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Android Emulator");
-        capabilities.setCapability(MobileCapabilityType.APP, "C:\\Users\\posoni\\Downloads\\usedApp\\Android.SauceLabs.Mobile.Sample.app.2.7.1.apk");
-//        capabilities.setCapability("appActivity",".MainActivity");
+        capabilities.setCapability(MobileCapabilityType.APP, "C:\\Users\\posoni\\Downloads\\MobileTestAutomation\\src\\main\\resources\\apps\\Android-MyDemoAppRN.1.3.0.build-244.apk");
+        capabilities.setCapability("appActivity",".MainActivity");
         capabilities.setCapability(MobileCapabilityType.FULL_RESET, false);
 
         return capabilities;
