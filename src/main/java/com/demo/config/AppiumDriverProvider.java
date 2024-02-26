@@ -1,36 +1,31 @@
 package com.demo.config;
 
+import com.demo.config.driver.AppDriver;
 import com.demo.config.driver.MobileAndroidDriver;
-import com.google.inject.Inject;
-import com.google.inject.Provider;
-import com.typesafe.config.Config;
+import com.demo.config.driver.MobileIosDriver;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import org.apache.commons.lang3.NotImplementedException;
 
-public class AppiumDriverProvider implements Provider<AppiumDriver<MobileElement>> {
-    private final Boolean isAndroid = System.getProperty("platform").equalsIgnoreCase("android");
-    private static AppiumDriver<MobileElement> sessionDriver;
-    private Config config;
+public class AppiumDriverProvider{
+    private static final Boolean isAndroid = System.getenv("platform").equalsIgnoreCase("android");
+    public static AppiumDriver<MobileElement> sessionDriver;
 
-    @Inject
-    public AppiumDriverProvider(Config config){
-        this.config = config;
+    public AppiumDriverProvider(){
 
     }
-
-    @Override
-    public synchronized AppiumDriver<MobileElement> get() {
+    public static void initiateApp() {
         if (isAndroid) {
-            sessionDriver = new MobileAndroidDriver(config).buildAndroidDriver();
-            try {
-                sessionDriver.wait(1000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+            sessionDriver = new MobileAndroidDriver().buildAndroidDriver();
+
         } else {
-            throw new NotImplementedException("iOS not implemented");
+            sessionDriver = new MobileIosDriver().buildIosDriver();
         }
-        return sessionDriver;
+        AppDriver.setDriver(sessionDriver);
     }
+
+    public static void tearDown(){
+        sessionDriver.quit();
+    }
+
 }

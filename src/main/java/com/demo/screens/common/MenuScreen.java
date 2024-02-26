@@ -1,17 +1,23 @@
 package com.demo.screens.common;
+import com.demo.config.driver.AppDriver;
 import com.demo.contracts.Home;
 import com.demo.contracts.Menu;
 import com.demo.screens.BaseScreen;
 import com.demo.utils.helpers.ActionHelper;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver;
+import org.aspectj.weaver.ast.And;
 import org.openqa.selenium.By;
 
-public abstract class MenuScreen extends BaseScreen implements Menu {
+public  class MenuScreen extends BaseScreen implements Menu {
     protected By menuLocator;
 
-    protected MenuScreen(AppiumDriver<MobileElement> appiumDriver, ActionHelper actionHelper) {
-        super(appiumDriver, actionHelper);
+    public MenuScreen() {
+        if(AppDriver.getDriver() instanceof AndroidDriver){
+
+        }
+
     }
 
     @Override
