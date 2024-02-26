@@ -38,9 +38,8 @@ public class LoginScreen extends BaseScreen implements Login {
     }
 
     @Override
-    public void enterCredentials() throws InterruptedException {
-        actionHelper.checkPresenceOfElement(username);
-        Thread.sleep(4000);
+    public void enterCredentials() {
+        actionHelper.findElement(username).click();
     actionHelper.findElement(username).sendKeys("bob@example.com");
     actionHelper.checkPresenceOfElement(password);
     actionHelper.findElement(password).sendKeys("10203040");
