@@ -21,9 +21,9 @@ public class HomeScreen extends BaseScreen implements Home {
             menuButton = By.xpath("//android.view.ViewGroup[@content-desc='open menu']");
             productLocator = By.xpath("(//android.widget.TextView[contains(@text,'Sauce Labs Backpack')])[1]");
         } else if (AppDriver.getDriver() instanceof IOSDriver) {
-            sortButtonLocator = By.xpath("//android.view.ViewGroup[@content-desc='sort button']");
-            menuButton = By.xpath("//android.view.ViewGroup[@content-desc='open menu']");
-            productLocator = By.xpath("(//android.widget.TextView[contains(@text,'Sauce Labs B
+            sortButtonLocator = By.xpath("//XCUIElementTypeOther[@name='sort button']");
+            menuButton = By.xpath("//XCUIElementTypeButton[@name='tab bar option menu']");
+            productLocator = By.xpath("//XCUIElementTypeOther[@name='Sauce Labs Backpack']");
 
         }
     }

@@ -7,12 +7,11 @@ import com.demo.utils.helpers.ActionHelper;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.ios.IOSDriver;
 import org.aspectj.weaver.ast.And;
 import org.openqa.selenium.By;
 
 public class MyCartScreen extends BaseScreen implements MyCart {
-    protected By sortButtonLocator;
-    protected By menuButton;
     protected By proceedToCheckout;
     ActionHelper actionHelper;
 
@@ -21,6 +20,9 @@ public class MyCartScreen extends BaseScreen implements MyCart {
         if(AppDriver.getDriver() instanceof AndroidDriver)
         {
             proceedToCheckout = By.xpath("//android.view.ViewGroup[@content-desc='Proceed To Checkout button']");
+        } else if (AppDriver.getDriver() instanceof IOSDriver) {
+            proceedToCheckout = By.xpath("//XCUIElementTypeOther[@name='Proceed To Checkout button']");
+
         }
     }
 

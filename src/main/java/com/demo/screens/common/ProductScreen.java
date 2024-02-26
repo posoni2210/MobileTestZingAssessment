@@ -1,14 +1,11 @@
 package com.demo.screens.common;
-import com.demo.config.AppiumDriverProvider;
 import com.demo.config.driver.AppDriver;
-import com.demo.contracts.Home;
 import com.demo.contracts.Product;
 import com.demo.screens.BaseScreen;
 import com.demo.utils.helpers.ActionHelper;
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
-import org.aspectj.weaver.ast.And;
+import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.ios.IOSElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -22,8 +19,12 @@ public class ProductScreen extends BaseScreen implements Product {
         if(AppDriver.getDriver() instanceof AndroidDriver){
             addToCartLocator = By.xpath("//android.view.ViewGroup[@content-desc='Add To Cart button']//android.widget.TextView");
             cartIconLocator = By.xpath("//android.view.ViewGroup[@content-desc='cart badge']");
-//            contentHeader = By.xpath("//android.widget.ScrollView[@content-desc='product screen']");
-        contentHeader = By.id("action_bar_root");
+          contentHeader = By.id("action_bar_root");
+        } else if (AppDriver.getDriver() instanceof IOSDriver) {
+            addToCartLocator = By.xpath("//XCUIElementTypeOther[@name='Add To Cart button']");
+            cartIconLocator = By.xpath("//XCUIElementTypeButton[@name='tab bar option cart']");
+            contentHeader = By.xpath("//XCUIElementTypeStaticText[@name='Sauce Labs Backpack']");
+
         }
     }
 
@@ -35,7 +36,12 @@ public class ProductScreen extends BaseScreen implements Product {
     @Override
     public void clickAddToCart() {
         actionHelper.findElement(contentHeader).click();
-        actionHelper.scrollGesture(contentHeader);
+        if(AppDriver.getDriver() instanceof IOSDriver){
+            IOSElement element = (IOSElement) actionHelper.findElement(contentHeader);
+            actionHelper.scrollForiOS(element);
+        }else{
+            actionHelper.scrollForAndroid(contentHeader);
+        }
         actionHelper.findElement(addToCartLocator).click();
 
     }

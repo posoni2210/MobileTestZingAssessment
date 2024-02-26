@@ -19,10 +19,10 @@ public class MobileIosDriver {
     private DesiredCapabilities getCapabilities() {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("automationName", "XCUITest");
-        capabilities.setCapability("platformName", "ios");
+        capabilities.setCapability("platformName", "iOS");
         capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "17.2");
-        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "iphone 15");
-        capabilities.setCapability(MobileCapabilityType.APP, "C:\\Users\\posoni\\Downloads\\MobileTestAutomation\\src\\main\\resources\\apps\\iOS-Real-Device-MyRNDemoApp.1.0.0-67.ipa");
+        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "iPhone 15");
+        capabilities.setCapability(MobileCapabilityType.APP, "/Users/admin/Downloads/MyRNDemoApp.app");
         capabilities.setCapability(MobileCapabilityType.FULL_RESET, false);
         return capabilities;
     }

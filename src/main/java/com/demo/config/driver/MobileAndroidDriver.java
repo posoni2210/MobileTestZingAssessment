@@ -20,7 +20,7 @@ public class MobileAndroidDriver {
         capabilities.setCapability("platformName", "android");
         capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "11");
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Android Emulator");
-        capabilities.setCapability(MobileCapabilityType.APP, "C:\\Users\\posoni\\Downloads\\MobileTestAutomation\\src\\main\\resources\\apps\\Android-MyDemoAppRN.1.3.0.build-244.apk");
+        capabilities.setCapability(MobileCapabilityType.APP, "src/main/resources/apps/Android-MyDemoAppRN.1.3.0.build-244.apk");
         capabilities.setCapability("appActivity",".MainActivity");
         capabilities.setCapability(MobileCapabilityType.FULL_RESET, false);
         return capabilities;
