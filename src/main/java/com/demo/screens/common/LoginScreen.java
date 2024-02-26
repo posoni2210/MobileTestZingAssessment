@@ -24,6 +24,10 @@ public class LoginScreen extends BaseScreen implements Login {
             password = By.xpath("//android.widget.EditText[@content-desc='Password input field']");
             LoginBtn = By.xpath("//android.view.ViewGroup[@content-desc='Login button']");
         }else if(AppDriver.getDriver() instanceof IOSDriver){
+            username = By.xpath("//XCUIElementTypeOther[@name='Username']");
+//            username = By.xpath("//XCUIElementTypeTextField[@name='Username input field']");
+            password = By.xpath("//XCUIElementTypeSecureTextField[@name='Password input field']");
+            LoginBtn = By.xpath("//XCUIElementTypeOther[@name='Login button']");
 
         }
     }
@@ -34,8 +38,11 @@ public class LoginScreen extends BaseScreen implements Login {
     }
 
     @Override
-    public void enterCredentials() {
+    public void enterCredentials() throws InterruptedException {
+        actionHelper.checkPresenceOfElement(username);
+        Thread.sleep(4000);
     actionHelper.findElement(username).sendKeys("bob@example.com");
+    actionHelper.checkPresenceOfElement(password);
     actionHelper.findElement(password).sendKeys("10203040");
     }
 

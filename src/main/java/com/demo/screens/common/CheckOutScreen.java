@@ -5,6 +5,7 @@ import com.demo.contracts.CheckOut;
 import com.demo.screens.BaseScreen;
 import com.demo.utils.helpers.ActionHelper;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.ios.IOSDriver;
 import org.openqa.selenium.By;
 
 public  class CheckOutScreen extends BaseScreen implements CheckOut {
@@ -14,6 +15,9 @@ public  class CheckOutScreen extends BaseScreen implements CheckOut {
         actionHelper = new ActionHelper(appiumDriver);
         if(AppDriver.getDriver() instanceof AndroidDriver){
             toPayment = By.xpath("//android.view.ViewGroup[@content-desc='To Payment button']");
+        }else if(AppDriver.getDriver() instanceof IOSDriver)
+        {
+            toPayment = By.xpath("//XCUIElementTypeOther[@name='To Payment button']");
         }
     }
 
